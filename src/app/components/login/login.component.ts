@@ -30,15 +30,12 @@ export class LoginComponent implements OnInit {
     console.warn(this.loginForm.value);
     if(this.loginForm.valid){
       this.auth.login(this.loginForm.value).subscribe(
-        (result) => {
-          console.log(result.name);
-          this.router.navigate(['admin']);
-        },
-        (err: Error) =>   {
-          alert(err.message);
+        {
+          complete: ()=> { this.router.navigate(['admin']);},
+          error: (err: Error) => { alert(err.message); }
         }
-        
       )
+      
     }
     
   }
