@@ -9,7 +9,6 @@ import { faLock } from '@fortawesome/free-solid-svg-icons';
 export class ForgotPasswordComponent implements OnInit{
   faLock = faLock;
   ngOnInit(): void {
-    
   }
 
 }
