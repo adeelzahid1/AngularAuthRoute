@@ -7,7 +7,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'forgot-password', component: ForgotPasswordComponent},
-  {path: 'not-found', component: NotFoundComponent}
+  {path: '', redirectTo: '/login', pathMatch: 'full'},
+  {path: '**', component: NotFoundComponent}
 ];
 
 @NgModule({
