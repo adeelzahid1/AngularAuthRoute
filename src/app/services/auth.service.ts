@@ -10,7 +10,7 @@ export class AuthService {
 
   constructor(private router: Router) { }
 
-  setToken(token: string){
+  setToken(token: string): void{
     localStorage.setItem('token', token);
   }
 
@@ -19,17 +19,21 @@ export class AuthService {
   }
 
   isLoggedIn(){
-    return this.getToken !== null;
+    return this.getToken() !== null;
   }
 
-  lotout(){
+  logout(){
+    console.log(`before logout ${this.getToken() }`);
     localStorage.removeItem('token');
     this.router.navigate(['login']);
+    
   }
 
   login({email, password}: any):Observable<any>{
-    if(email == "adeel@admin.com" && password == "3322"){
+    if(email === "adeel@admin.com" && password === "3322"){
+      console.log(`Token ${this.getToken()}`);
       this.setToken('ssfakldjflasldfjlasjdkflajslkdfjls');
+      
       return of({name: 'Adeel', email:'adeel@admin.com'});
     }
     return throwError(new Error('Failed to Login'));
